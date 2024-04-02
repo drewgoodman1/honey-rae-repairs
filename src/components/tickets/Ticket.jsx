@@ -5,7 +5,7 @@ export const Ticket = ({ ticket }) => {
   const [employees, setEmployees] = useState([]);
   const [assignedEmployee, setAssignedEmployee] = useState({});
 
-  //get employees from DB and set to employees state vae
+  //get employees from DB and set to employees state var
   useEffect(() => {
     getAllEmployees().then((employeesArray) => {
       setEmployees(employeesArray);
