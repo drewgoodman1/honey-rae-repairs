@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getStaffUsers } from "../../services/userService.js";
 import { User } from "../../users/User.jsx";
+import { Link } from "react-router-dom";
 import "./Employees.css";
 
 export const Employees = () => {
@@ -14,8 +15,12 @@ export const Employees = () => {
 
   return (
     <div className="employees">
-      {employees.map((customerObj) => {
-        return <User user={customerObj} />;
+      {employees.map((employeeObj) => {
+        return (
+          <Link to={`/employees/${employeeObj.id}`}>
+            <User user={employeeObj} />
+          </Link>
+        );
       })}
     </div>
   );
