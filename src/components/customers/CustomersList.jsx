@@ -15,13 +15,11 @@ export const CustomerList = () => {
 
   return (
     <div className="customers">
-      {customers.map((customerObj) => {
-        return (
-          <Link to={`/customers/${customerObj.id}`}>
-            <User user={customerObj} />
-          </Link>
-        );
-      })}
+      {customers.map((customerObj) => (
+        <Link key={customerObj.id} to={`/customers/${customerObj.id}`}>
+          <User key={customerObj.id} user={customerObj} />
+        </Link>
+      ))}
     </div>
   );
 };

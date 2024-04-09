@@ -25,6 +25,11 @@ export const EmployeeDetails = () => {
         <span className="employee-info">Specialty : </span>
         {employee.specialty}
       </div>
+      <div>
+        <span className="employee-info">Rate : </span>
+        {employee.rate}
+      </div>
+      <div>Currently working on </div>
     </section>
   );
 };

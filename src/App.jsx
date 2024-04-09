@@ -1,38 +1,23 @@
 import "./App.css";
-import { CustomerList } from "./components/customers/CustomersList.jsx";
-import { Employees } from "./components/employees/Employees.jsx";
-import { NavBar } from "./components/nav/NavBar.jsx";
-import { TicketList } from "./components/tickets/TicketList.jsx";
-import { Route, Routes, Outlet } from "react-router-dom";
-import { Welcome } from "./components/welcome/Welcome.jsx";
-import { CustomerDetails } from "./components/customers/CustomerDetails.jsx";
-import { EmployeeDetails } from "./components/employees/EmployeeDetails.jsx";
+import { Route, Routes } from "react-router-dom";
+import { Login } from "./components/auth/Login.jsx";
+import { Register } from "./components/auth/Register.jsx";
+import { ApplicationViews } from "./views/ApplicationViews.jsx";
+import { Authorized } from "./views/Authorized.jsx";
 
 export const App = () => {
   return (
     <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
       <Route
-        path="/"
+        path="*"
         element={
-          <>
-            <NavBar />
-            <Outlet />
-          </>
+          <Authorized>
+            <ApplicationViews />
+          </Authorized>
         }
-      >
-        <Route index element={<Welcome />} />
-        <Route path="tickets" element={<TicketList />} />
-        <Route path="employees">
-          <Route index element={<Employees />} />
-          <Route path=":employeeId" element={<EmployeeDetails />} />{" "}
-          {/* /customers/:customerId */}
-        </Route>
-        <Route path="customers">
-          <Route index element={<CustomerList />} />
-          <Route path=":customerId" element={<CustomerDetails />} />{" "}
-          {/* /customers/:customerId */}
-        </Route>
-      </Route>
+      />
     </Routes>
   );
 };
